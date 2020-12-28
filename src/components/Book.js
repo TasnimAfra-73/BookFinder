@@ -1,7 +1,7 @@
 import react from "react";
 import { Link } from "react-router-dom";
 
-const Movie = (props) => {
+const Book = (props) => {
   const ImageURL = "https://image.tmdb.org/t/p/w500/" + props.data.poster_path;
   return (
     <div class="col s12 m4">
@@ -28,7 +28,7 @@ const Movie = (props) => {
           <Link
             to={{
               pathname: "/movie/" + props.data.id,
-              movie_id: props.data.id,
+              book_id: props.data.id,
             }}
           >
             See Details
@@ -39,4 +39,4 @@ const Movie = (props) => {
   );
 };
 
-export default Movie;
+export default Book;

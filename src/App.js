@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Searchbar from "./components/Searchbar";
-import MovieList from "./components/MovieList";
+import BookList from "./components/BookList";
 import { getMoviesByTerm } from "./api/TMDB";
 import Pagination from "./components/Pagination";
 
@@ -27,7 +27,7 @@ const App = () => {
   return (
     <div>
       <Searchbar handleChange={handleChange} handleSubmit={handleSubmit} />
-      <MovieList movies={movies} />
+      <BookList books={books} />
       {totalPages > 1 ? (
         <Pagination
           nextPage={nextPage}
