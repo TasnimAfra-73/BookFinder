@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getBookDetails } from "../api/TMDB";
+import { getBookDetails } from "../api/BookFinder";
 import { Link } from "react-router-dom";
 
 const BookDetails = (props) => {

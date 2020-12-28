@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Searchbar from "./components/Searchbar";
 import BookList from "./components/BookList";
-import { getBooksByTerm } from "./api/TMDB";
+import { getBooksByTerm } from "./api/BookFinder";
 import Pagination from "./components/Pagination";
 
 const App = () => {
