@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import Searchbar from "./components/Searchbar";
 import BookList from "./components/BookList";
-import { getMoviesByTerm } from "./api/TMDB";
+import { getBooksByTerm } from "./api/TMDB";
 import Pagination from "./components/Pagination";
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [movies, setMovies] = useState([]);
+  const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await getMoviesByTerm(searchTerm, setMovies, currentPage, setTotalPages);
+    await getBooksByTerm(searchTerm, setBooks, currentPage, setTotalPages);
   };
 
   const handleChange = (event) => {
@@ -21,7 +21,7 @@ const App = () => {
 
   const nextPage = async (page_number) => {
     setCurrentPage(page_number);
-    await getMoviesByTerm(searchTerm, setMovies, currentPage, setTotalPages);
+    await getBooksByTerm(searchTerm, setBooks, currentPage, setTotalPages);
   };
 
   return (

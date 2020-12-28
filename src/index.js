@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import MovieDetails from "./components/MovieDetails";
+import BookDetails from "./components/BookDetails";
 import Navbar from "./components/Navbar";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 
@@ -11,7 +11,7 @@ ReactDOM.render(
       <Navbar />
       <div>
         <Route path="/" exact component={App} />
-        <Route path="/movie/:id" exact component={MovieDetails} />
+        <Route path="/movie/:id" exact component={BookDetails} />
       </div>
     </BrowserRouter>
   </React.StrictMode>,
