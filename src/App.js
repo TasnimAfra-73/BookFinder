@@ -3,6 +3,7 @@ import Searchbar from "./components/Searchbar";
 import BookList from "./components/BookList";
 import { getBooksByTerm } from "./api/BookFinder";
 import Pagination from "./components/Pagination";
+import 'fomantic-ui-css/semantic.css';
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");

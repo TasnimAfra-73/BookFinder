@@ -9,13 +9,13 @@ const Book = (props) => {
         <div class="card-image">
           {props.data.poster_path == null ? (
             <img
-              src="https://picsum.photos/200/300"
+              src={props.data}
               alt=""
               style={{ width: "100", height: "200" }}
             />
           ) : (
             <img
-              src={ImageURL}
+              src={props.data}
               alt=""
               style={{ width: "100", height: "200" }}
             />

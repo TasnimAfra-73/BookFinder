@@ -1,19 +1,19 @@
 import axios from "axios";
 
 const BookFinder = axios.create({
-  baseURL: "https://api.themoviedb.org/3/",
+  baseURL: "https://www.googleapis.com/books/v1",
 });
 
 const getBooksByTerm = (SearchTerm, setBooks, page_number, setTotalPages) => {
-  BookFinder.get("/search/movie/", {
+  BookFinder.get("/volumes/", {
     params: {
-      api_key: "209d31e2b7002857fcc0fdeff8329ae2",
-      query: SearchTerm,
+      key: "AIzaSyDMfnUMmRi-jpawGLffj4fodpE4UH4G8lM",
+      q: SearchTerm,
       page: page_number,
     },
   }).then((response) => {
     console.log(response.data);
-    setBooks(response.data.results);
+    setBooks(response.data.items);
     setTotalPages(response.data.total_pages);
   });
 };
@@ -21,7 +21,7 @@ const getBooksByTerm = (SearchTerm, setBooks, page_number, setTotalPages) => {
 const getBookDetails = (bookID, setCurrentBook) => {
   BookFinder.get("movie/" + bookID, {
     params: {
-      api_key: "209d31e2b7002857fcc0fdeff8329ae2",
+      key: "AIzaSyDMfnUMmRi-jpawGLffj4fodpE4UH4G8lM",
     },
   }).then((response) => {
     console.log(response.data);
