@@ -21,10 +21,12 @@ const getBooksByTerm = (SearchTerm, setBooks, start_index, setTotalItems) => {
 const getBooksByOrder = (
   SearchTerm,
   setBooks,
-  order
+  order,
+  currentIndex,
+  setTotalItems
 ) => {
 BookFinder
-  .get('/', {
+  .get('/volumes/', {
       params: {
         key: 'AIzaSyDMfnUMmRi-jpawGLffj4fodpE4UH4G8lM',
         q: SearchTerm,
@@ -34,6 +36,7 @@ BookFinder
     })
     .then(response => {
       setBooks(response.data.items)
+      setTotalItems(response.data.totalItems)
     })
 }
 

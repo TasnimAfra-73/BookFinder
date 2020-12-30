@@ -18,7 +18,7 @@ const App = () => {
   };
 
   const handleSubmitOrder = () => {
-    getBooksByOrder(searchTerm, setBooks, order)
+    getBooksByOrder(searchTerm, setBooks, order, currentIndex, setTotalItems)
   }
 
   const handleChange = (event) => {
