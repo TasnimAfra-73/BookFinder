@@ -18,4 +18,23 @@ const getBooksByTerm = (SearchTerm, setBooks, start_index, setTotalItems) => {
   });
 };
 
-export { getBooksByTerm};
+const getBooksByOrder = (
+  SearchTerm,
+  setBooks,
+  order
+) => {
+BookFinder
+  .get('/', {
+      params: {
+        key: 'AIzaSyDMfnUMmRi-jpawGLffj4fodpE4UH4G8lM',
+        q: SearchTerm,
+        startIndex: 0,
+        orderBy: order,
+      },
+    })
+    .then(response => {
+      setBooks(response.data.items)
+    })
+}
+
+export { getBooksByTerm, getBooksByOrder};
