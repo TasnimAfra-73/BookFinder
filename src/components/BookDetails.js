@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { getBookDetails } from "../api/BookFinder";
 import { Link } from "react-router-dom";
 
 const BookDetails = (props) => {
   console.log(props)
-  const [currentBook, setCurrentBook] = useState({});
-
-  useEffect(() => {
-    getBookDetails(props.location.details, setCurrentBook);
-  }, []);
-
   return (
     <div>
       <div class="row">
@@ -21,16 +14,25 @@ const BookDetails = (props) => {
                 alt=""
                 style={{ width: "400", height: "800" }}
               />
-              <span class="card-title">{props.history.location.details.title}</span>
             </div>
-            <div class="card-content">
+            <div className="card-content">
+              <span
+                className="card-title"
+                style={{ color: "teal", fontSize: "100", marginLeft:"50"}}
+              >
+                <p style={{ marginLeft: "50" }}>
+                  {props.history.location.details.title}
+                </p>
+              </span>
+            </div>
+            <div className="card-content">
               <p>{props.history.location.details.authors}</p>
             </div>
-             <div class="card-content">
+            <div className="card-content">
               <p>{props.history.location.details.description}</p>
             </div>
-            <div class="card-action">
-              <Link to="/">Go back to searching books!</Link>
+            <div className="card-action">
+              <Link to="/">Go back to search page!</Link>
             </div>
           </div>
         </div>

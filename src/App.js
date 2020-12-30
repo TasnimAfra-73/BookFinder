@@ -8,32 +8,34 @@ import 'fomantic-ui-css/semantic.css';
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [books, setBooks] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+  const [totalItems, setTotalItems] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await getBooksByTerm(searchTerm, setBooks, currentPage, setTotalPages);
+    await getBooksByTerm(searchTerm, setBooks, currentIndex, setTotalItems);
   };
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  const nextPage = async (page_number) => {
-    setCurrentPage(page_number);
-    await getBooksByTerm(searchTerm, setBooks, currentPage, setTotalPages);
+   const nextPage = async (index) => {
+    setCurrentIndex(index);
+    await getBooksByTerm(searchTerm, setBooks, currentIndex, setTotalItems);
   };
 
   return (
     <div>
       <Searchbar handleChange={handleChange} handleSubmit={handleSubmit} />
       <BookList books={books} />
-      {totalPages > 1 ? (
+      {totalItems > 10 ? (
         <Pagination
           nextPage={nextPage}
-          currentPage={currentPage}
-          totalPages={totalPages}
+          currentIndex={currentIndex}
+          totalItems={totalItems}
         />
       ) : (
         ""
