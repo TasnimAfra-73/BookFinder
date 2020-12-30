@@ -2,33 +2,33 @@ import react from "react";
 import { Link } from "react-router-dom";
 
 const Book = (props) => {
-  const ImageURL = "https://image.tmdb.org/t/p/w500/" + props.data.poster_path;
+  const ImageURL = props.data.volumeInfo.imageLinks.thumbnail;
   return (
     <div class="col s12 m4">
       <div class="card">
         <div class="card-image">
-          {props.data.poster_path == null ? (
+          {ImageURL == null ? (
             <img
-              src={props.data}
+              src="https://picsum.photos/200/300"
               alt=""
               style={{ width: "100", height: "200" }}
             />
           ) : (
             <img
-              src={props.data}
+              src={ImageURL}
               alt=""
               style={{ width: "100", height: "200" }}
             />
           )}
 
-          <span class="card-title">{props.data.title}</span>
+          <span class="card-title">{props.data.volumeInfo.title}</span>
         </div>
-        <div class="card-content">{props.data.release_date}</div>
+        <div class="card-content">{props.data.volumeInfo.authors}</div>
         <div class="card-action">
           <Link
             to={{
-              pathname: "/movie/" + props.data.id,
-              book_id: props.data.id,
+              pathname: "/book/" + props.data.id,
+              details: props.data.volumeInfo,
             }}
           >
             See Details

@@ -3,37 +3,31 @@ import { getBookDetails } from "../api/BookFinder";
 import { Link } from "react-router-dom";
 
 const BookDetails = (props) => {
+  console.log(props)
   const [currentBook, setCurrentBook] = useState({});
 
   useEffect(() => {
-    getBookDetails(props.location.movie_id, setCurrentBook);
+    getBookDetails(props.location.details, setCurrentBook);
   }, []);
 
-  const ImageURL =
-    "https://image.tmdb.org/t/p/w500/" + currentBook.poster_path;
   return (
     <div>
       <div class="row">
         <div class="col s12 m7">
           <div class="card">
             <div class="card-image">
-              {currentBook.poster_path != null ? (
-                <img
-                  src={props.data}
-                  alt=""
-                  style={{ width: "300", height: "600" }}
-                />
-              ) : (
-                <img
-                  src="https://.photos/300/600"
-                  alt=""
-                  style={{ width: "300", height: "600" }}
-                />
-              )}
-              <span class="card-title">{currentBook.original_title}</span>
+              <img
+                src={props.history.location.details.imageLinks.thumbnail}
+                alt=""
+                style={{ width: "400", height: "800" }}
+              />
+              <span class="card-title">{props.history.location.details.title}</span>
             </div>
             <div class="card-content">
-              <p>{currentBook.overview}</p>
+              <p>{props.history.location.details.authors}</p>
+            </div>
+             <div class="card-content">
+              <p>{props.history.location.details.description}</p>
             </div>
             <div class="card-action">
               <Link to="/">Go back to searching books!</Link>
